@@ -1,6 +1,6 @@
 {
   "name": "dinq-autopilot",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Auto-generate Dinq cards with Code Agents - Claude Code, Cursor, Windsurf & more",
   "main": "dist/index.js",
   "type": "module",

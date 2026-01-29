@@ -16,7 +16,16 @@ async function setup() {
   });
 
   try {
-    console.log("Get your Dinq API token from: https://dinq.me/settings/api\n");
+    console.log("Press ENTER to open browser and get your Dinq API token...");
+    await rl.question("");
+
+    // Open browser
+    const url = "https://dinq.me/settings/api";
+    const { exec } = await import("child_process");
+    const openCommand = process.platform === "darwin" ? "open" : process.platform === "win32" ? "start" : "xdg-open";
+    exec(`${openCommand} ${url}`);
+
+    console.log(`✅ Browser opened: ${url}\n`);
     const token = await rl.question("Enter your Dinq API token: ");
 
     if (!token.trim()) {
