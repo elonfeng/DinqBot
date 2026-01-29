@@ -1,168 +1,92 @@
 # dinq-autopilot
 
-<div align="center">
-
-✈️ **AI Autopilot for Your Dinq Profile**
-
-Auto-generate Dinq cards with Code Agents - Claude Code, Cursor, Windsurf & more
-
-[![npm version](https://img.shields.io/npm/v/dinq-autopilot.svg)](https://www.npmjs.com/package/dinq-autopilot)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![MCP](https://img.shields.io/badge/MCP-Compatible-blue)](https://modelcontextprotocol.io)
-
-</div>
+[English](#english) | [中文](#中文)
 
 ---
 
-## What is dinq-autopilot?
+<div id="english"></div>
 
-**dinq-autopilot** is an AI agent that automatically manages your [Dinq](https://dinq.me) profile through natural language commands. Built on the Model Context Protocol (MCP), it works seamlessly with Claude Code, Cursor, Windsurf, and other AI coding assistants.
+## English
 
-### The Old Way ❌
-```
+**AI Autopilot for Your Dinq Profile**
+
+Auto-generate Dinq cards with Code Agents - Claude Code, Cursor, Windsurf & more.
+
+### What is dinq-autopilot?
+
+dinq-autopilot is an AI agent that automatically manages your [Dinq](https://dinq.me) profile through natural language commands. Built on the Model Context Protocol (MCP), it works seamlessly with Claude Code, Cursor, Windsurf, and other AI coding assistants.
+
+**The Old Way:**
 1. Open browser → dinq.me
-2. Login
-3. Click "Add Card"
-4. Fill out form
-5. Save
-```
+2. Login → Click "Add Card" → Fill form → Save
 
-### The Autopilot Way ✅
+**The Autopilot Way:**
 ```
 You: "Create a token stats card for this week"
-AI: ✅ Done! Token stats card created.
+AI: ✅ Done!
 ```
 
----
+### Features
 
-## Features
+- 🤖 Natural language control - Command your Dinq profile through conversational AI
+- 📊 Token statistics - Track your Claude Code usage automatically
+- 🔗 Social media cards - Batch import GitHub, LinkedIn, Twitter profiles
+- 📝 Custom notes - Create markdown-powered note cards
+- 🎯 Career trajectory - Generate professional timeline from your bio
+- 🎨 Smart management - List, update, and delete cards
 
-- 🤖 **Natural Language Control** - Command your Dinq profile through conversational AI
-- 📊 **Token Statistics** - Track your Claude Code usage automatically
-- 🔗 **Social Media Cards** - Batch import GitHub, LinkedIn, Twitter profiles
-- 📝 **Custom Notes** - Create markdown-powered note cards
-- 🎯 **Career Trajectory** - Generate professional timeline from your bio
-- 🎨 **Smart Management** - List, update, and delete cards with simple commands
+### Quick Start
 
----
-
-## Quick Start
-
-### Installation
-
+**Installation:**
 ```bash
 npm install -g dinq-autopilot
 ```
 
-### Setup
-
+**Setup:**
 ```bash
 dinq-autopilot setup
 ```
 
-You'll be prompted to enter your Dinq API token (get it from [dinq.me/settings/api](https://dinq.me/settings/api))
+Get your Dinq API token from [dinq.me/settings/api](https://dinq.me/settings/api)
 
-### Usage in Claude Code
-
+**Usage in Claude Code:**
 ```bash
 claude
 
-> Create a token stats card for this week with 15000 input and 8000 output tokens
+> Create a token stats card with 15000 input and 8000 output tokens
 ✅ Token statistics card created!
 
-> Create a GitHub card for my profile: github.com/username
+> Create a GitHub card for github.com/username
 ✅ GitHub card created!
 
 > List all my cards
-📋 Your cards:
-1. [TOKEN_STATS] This week
-2. [GITHUB] username
+📋 Your cards: ...
 ```
 
----
+### Available Commands
 
-## Available Commands
+**Card Creation:**
+- `create_token_stats_card` - Generate token usage statistics
+- `create_github_card` - Create GitHub profile card
+- `create_note_card` - Create custom note card
+- `create_social_cards` - Batch import social profiles
+- `create_career_trajectory` - Generate career timeline
 
-### Card Creation
+**Card Management:**
+- `list_cards` - View all your cards
+- `delete_card` - Remove a card
 
-- **`create_token_stats_card`** - Generate token usage statistics
-  ```
-  Create a token stats card for this month with 50000 input and 30000 output tokens
-  ```
+### Supported Tools
 
-- **`create_github_card`** - Show GitHub activity
-  ```
-  Create a GitHub card for https://github.com/torvalds
-  ```
+- Claude Code
+- Cursor
+- Windsurf
+- VS Code (with Cline)
+- Any MCP-compatible AI tool
 
-- **`create_note_card`** - Create markdown notes
-  ```
-  Create a note card titled "Project Ideas" with content "Build an AI code review tool"
-  ```
+### Configuration
 
-- **`create_social_cards`** - Batch import social profiles
-  ```
-  Create cards for my GitHub (github.com/user), LinkedIn (linkedin.com/in/user), and Twitter (twitter.com/user)
-  ```
-
-- **`create_career_trajectory`** - Generate career timeline
-  ```
-  Create a career trajectory from my bio: "Software engineer with 5 years at Google..."
-  ```
-
-### Card Management
-
-- **`list_cards`** - View all your cards
-  ```
-  List all my cards
-  ```
-
-- **`delete_card`** - Remove a card
-  ```
-  Delete card with ID abc123
-  ```
-
----
-
-## Supported Tools
-
-dinq-autopilot works with any MCP-compatible AI tool:
-
-- ✅ [Claude Code](https://claude.com/code)
-- ✅ [Cursor](https://cursor.sh)
-- ✅ [Windsurf](https://codeium.com/windsurf)
-- ✅ VS Code with [Cline](https://github.com/cline/cline)
-- ✅ Any MCP client
-
----
-
-## Configuration
-
-### Claude Code
-
-Automatic configuration via `dinq-autopilot setup` command.
-
-Manual configuration in `~/.claude.json`:
-
-```json
-{
-  "mcpServers": {
-    "dinq-autopilot": {
-      "command": "npx",
-      "args": ["-y", "dinq-autopilot"],
-      "env": {
-        "DINQ_USER_TOKEN": "your_token_here",
-        "DINQ_API_ENDPOINT": "https://api.dinq.me"
-      }
-    }
-  }
-}
-```
-
-### Cursor
-
-Configuration in `~/.cursor/mcp.json`:
-
+**Claude Code** (`~/.claude.json`):
 ```json
 {
   "mcpServers": {
@@ -177,73 +101,139 @@ Configuration in `~/.cursor/mcp.json`:
 }
 ```
 
-### Windsurf
+**Cursor** (`~/.cursor/mcp.json`):
+```json
+{
+  "mcpServers": {
+    "dinq-autopilot": {
+      "command": "npx",
+      "args": ["-y", "dinq-autopilot"],
+      "env": {
+        "DINQ_USER_TOKEN": "your_token_here"
+      }
+    }
+  }
+}
+```
 
-Similar to Cursor configuration.
+### License
+
+MIT
 
 ---
 
-## Example Use Cases
+<div id="中文"></div>
 
-### 📊 Track Your AI Usage
+## 中文
+
+**你的 Dinq 个人资料 AI 自动驾驶**
+
+使用 Code Agent 自动生成 Dinq 卡片 - 支持 Claude Code、Cursor、Windsurf 等。
+
+### 这是什么？
+
+dinq-autopilot 是一个 AI 代理，通过自然语言命令自动管理你的 [Dinq](https://dinq.me) 个人资料。基于模型上下文协议（MCP）构建，与 Claude Code、Cursor、Windsurf 等 AI 编程助手无缝协作。
+
+**传统方式：**
+1. 打开浏览器 → dinq.me
+2. 登录 → 点击「添加卡片」→ 填表 → 保存
+
+**自动驾驶方式：**
 ```
-"Create a token stats card for this month with 150000 input and 90000 output tokens"
+你：「创建一个本周的 token 统计卡片」
+AI：✅ 完成！
 ```
 
-### 🚀 Quick Profile Setup
-```
-"Create social cards for my GitHub github.com/user, LinkedIn linkedin.com/in/user, and Spotify open.spotify.com/user/xxx"
-```
+### 功能特性
 
-### 📝 Meeting Notes
-```
-"Create a note card titled 'Sprint Planning' with today's action items: 1. Review backlog 2. Plan sprint 3. Assign tasks"
-```
+- 🤖 自然语言控制 - 通过对话式 AI 指挥你的 Dinq
+- 📊 Token 统计 - 自动追踪 Claude Code 使用情况
+- 🔗 社交媒体卡片 - 批量导入 GitHub、LinkedIn、Twitter 等
+- 📝 自定义笔记 - 创建 Markdown 笔记卡片
+- 🎯 职业轨迹 - 从个人简介生成专业时间线
+- 🎨 智能管理 - 列出、更新、删除卡片
 
-### 🎯 Career Showcase
-```
-"Create a career trajectory from my bio: I'm a full-stack engineer with 5 years at Google..."
-```
+### 快速开始
 
----
-
-## Development
-
-### Build from Source
-
+**安装：**
 ```bash
-git clone https://github.com/elonfeng/dinq-autopilot.git
-cd dinq-autopilot
-npm install
-npm run build
+npm install -g dinq-autopilot
 ```
 
-### Local Testing
-
+**配置：**
 ```bash
-npm run dev
+dinq-autopilot setup
 ```
 
----
+从 [dinq.me/settings/api](https://dinq.me/settings/api) 获取你的 Dinq API token
 
-## License
+**在 Claude Code 中使用：**
+```bash
+claude
 
-MIT © Elon Feng
+> 创建一个 token 统计卡片，输入 15000，输出 8000
+✅ Token 统计卡片已创建！
 
----
+> 为 github.com/username 创建 GitHub 卡片
+✅ GitHub 卡片已创建！
 
-## Links
+> 列出我所有的卡片
+📋 你的卡片：...
+```
 
-- [Dinq Platform](https://dinq.me)
-- [Report Issues](https://github.com/elonfeng/dinq-autopilot/issues)
-- [MCP Documentation](https://modelcontextprotocol.io)
+### 可用命令
 
----
+**卡片创建：**
+- `create_token_stats_card` - 生成 token 使用统计
+- `create_github_card` - 创建 GitHub 卡片
+- `create_note_card` - 创建自定义笔记
+- `create_social_cards` - 批量导入社交媒体
+- `create_career_trajectory` - 生成职业轨迹
 
-<div align="center">
+**卡片管理：**
+- `list_cards` - 查看所有卡片
+- `delete_card` - 删除卡片
 
-**Built for the AI-native developer workflow**
+### 支持的工具
 
-⭐ Star on GitHub • 📦 npm Package
+- Claude Code
+- Cursor
+- Windsurf
+- VS Code（配合 Cline）
+- 任何兼容 MCP 的 AI 工具
 
-</div>
+### 配置方法
+
+**Claude Code** (`~/.claude.json`)：
+```json
+{
+  "mcpServers": {
+    "dinq-autopilot": {
+      "command": "npx",
+      "args": ["-y", "dinq-autopilot"],
+      "env": {
+        "DINQ_USER_TOKEN": "你的_token"
+      }
+    }
+  }
+}
+```
+
+**Cursor** (`~/.cursor/mcp.json`)：
+```json
+{
+  "mcpServers": {
+    "dinq-autopilot": {
+      "command": "npx",
+      "args": ["-y", "dinq-autopilot"],
+      "env": {
+        "DINQ_USER_TOKEN": "你的_token"
+      }
+    }
+  }
+}
+```
+
+### 开源协议
+
+MIT
