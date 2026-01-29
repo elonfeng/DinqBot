@@ -37,11 +37,11 @@ AI:  📋 Your cards:
 npm install -g dinq-autopilot
 ```
 
-**2. Setup**
+**2. Login**
 ```bash
-dinq-autopilot setup
+dinq-autopilot login
 ```
-Enter your Dinq API token (get it from [dinq.me](https://dinq.me))
+Follow the browser prompt to get your Dinq API token from [dinq.me/autopilot](https://dinq.me/autopilot)
 
 **3. Use**
 
@@ -103,7 +103,7 @@ Built on [Model Context Protocol (MCP)](https://modelcontextprotocol.io) - the o
 
 ### Configuration
 
-After running `dinq-autopilot setup`, the tool automatically configures itself in your AI assistant. Your API token is stored locally and never shared.
+After running `dinq-autopilot login`, the tool automatically configures itself in your AI assistant. Your API token is stored locally and never shared.
 
 Manual configuration: See [examples/](./examples) for Claude Code, Cursor, and other tools.
 
@@ -148,11 +148,11 @@ AI： 📋 你的卡片：
 npm install -g dinq-autopilot
 ```
 
-**2. 配置**
+**2. 登录**
 ```bash
-dinq-autopilot setup
+dinq-autopilot login
 ```
-输入你的 Dinq API token（从 [dinq.me](https://dinq.me) 获取）
+根据浏览器提示从 [dinq.me/autopilot](https://dinq.me/autopilot) 获取你的 Dinq API token
 
 **3. 使用**
 
@@ -214,7 +214,7 @@ Cmd+K → 「把我的 LinkedIn 加到 Dinq：linkedin.com/in/username」
 
 ### 配置说明
 
-运行 `dinq-autopilot setup` 后，工具会自动在你的 AI 助手中完成配置。你的 API token 存储在本地，不会被分享。
+运行 `dinq-autopilot login` 后，工具会自动在你的 AI 助手中完成配置。你的 API token 存储在本地，不会被分享。
 
 手动配置：查看 [examples/](./examples) 目录，有 Claude Code、Cursor 等工具的配置示例。
 

@@ -17,8 +17,8 @@ function getVersion(): string {
   return packageJson.version;
 }
 
-async function setup() {
-  console.log("Dinq Autopilot Setup\n");
+async function login() {
+  console.log("Dinq Autopilot Login\n");
 
   const rl = readline.createInterface({
     input: process.stdin,
@@ -30,7 +30,7 @@ async function setup() {
     await rl.question("");
 
     // Open browser
-    const url = "https://dinq.me/";
+    const url = "https://dinq.me/autopilot";
     const { exec } = await import("child_process");
     const openCommand = process.platform === "darwin" ? "open" : process.platform === "win32" ? "start" : "xdg-open";
     exec(`${openCommand} ${url}`);
@@ -67,13 +67,13 @@ async function setup() {
     // Write config
     writeFileSync(CLAUDE_CONFIG_PATH, JSON.stringify(config, null, 2));
 
-    console.log("\nSetup complete!");
+    console.log("\nLogin complete!");
     console.log(`\nConfiguration saved to: ${CLAUDE_CONFIG_PATH}`);
     console.log("\nYou can now use dinq-autopilot in Claude Code:");
     console.log("  claude");
     console.log('  > Create a token stats card\n');
   } catch (error) {
-    console.error("Error: Setup failed:", error);
+    console.error("Error: Login failed:", error);
     process.exit(1);
   } finally {
     rl.close();
@@ -82,16 +82,16 @@ async function setup() {
 
 const command = process.argv[2];
 
-if (command === "setup") {
-  setup();
+if (command === "login") {
+  login();
 } else if (command === "--version" || command === "-v") {
   console.log(getVersion());
 } else {
   console.log("Dinq Autopilot CLI\n");
   console.log("Available commands:");
-  console.log("  setup        Configure dinq-autopilot for Claude Code");
+  console.log("  login            Login and configure dinq-autopilot");
   console.log("  -v, --version    Show version number");
   console.log("\nUsage:");
-  console.log("  dinq-autopilot setup");
+  console.log("  dinq-autopilot login");
   console.log("  dinq-autopilot --version");
 }
