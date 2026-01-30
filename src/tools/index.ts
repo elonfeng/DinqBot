@@ -127,4 +127,45 @@ export const tools = [
       required: ["card_id"],
     },
   },
+  {
+    name: "create_vibe_heatmap_card",
+    description: "Create a vibe coding heatmap card showing daily token usage statistics. The AI agent should first collect the usage data by running the stats script, then pass the results to this tool.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        total_days: {
+          type: "number",
+          description: "Total number of days with activity",
+        },
+        total_tokens: {
+          type: "number",
+          description: "Total tokens used across all days",
+        },
+        daily: {
+          type: "array",
+          description: "Daily token usage breakdown",
+          items: {
+            type: "object",
+            properties: {
+              date: {
+                type: "string",
+                description: "Date in YYYY-MM-DD format",
+              },
+              tokens: {
+                type: "number",
+                description: "Tokens used on this day",
+              },
+            },
+            required: ["date", "tokens"],
+          },
+        },
+        platform: {
+          type: "string",
+          description: "Platform name (e.g., 'claude', 'cursor')",
+          default: "claude",
+        },
+      },
+      required: ["total_days", "total_tokens", "daily"],
+    },
+  },
 ];

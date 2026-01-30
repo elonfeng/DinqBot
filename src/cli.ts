@@ -53,34 +53,85 @@ async function getTokenFromBrowser(): Promise<string> {
 }
 
 async function setupClaude(token: string) {
-  const configPath = CONFIG_PATHS.claude;
+  const { execSync } = await import("child_process");
 
-  // Read existing config or create new one
-  let config: any = {};
-  if (existsSync(configPath)) {
-    const content = readFileSync(configPath, "utf-8");
-    config = JSON.parse(content);
-  }
-
-  // Add or update dinq-autopilot server
-  if (!config.mcpServers) {
-    config.mcpServers = {};
-  }
-
-  config.mcpServers["dinq-autopilot"] = {
+  // Use Claude Code's official CLI to add MCP server with user scope
+  const mcpConfig = {
     command: "npx",
-    args: ["-y", "dinq-autopilot"],
+    args: ["-y", "dinq-autopilot-mcp"],
     env: {
       DINQ_USER_TOKEN: token,
       DINQ_API_ENDPOINT: "https://api.dinq.me",
     },
   };
 
-  // Write config
+  try {
+    // Remove existing config first (ignore errors if not exists)
+    try {
+      execSync("claude mcp remove dinq-autopilot --scope user", { stdio: "ignore" });
+    } catch {
+      // Ignore if not exists
+    }
+
+    // Add using official CLI with user scope
+    const configJson = JSON.stringify(mcpConfig);
+    execSync(`claude mcp add-json dinq-autopilot '${configJson}' --scope user`, {
+      stdio: "inherit",
+    });
+
+    console.log("\nSetup complete!");
+    console.log("\nPlease restart Claude Code to load the new configuration:");
+    console.log("  1. Exit current Claude Code session");
+    console.log("  2. Run 'claude' to start a new session");
+    console.log("  3. Try: 'Create a GitHub card for my profile'\n");
+  } catch (error) {
+    // Fallback to manual config if claude CLI is not available
+    console.log("Claude CLI not found, falling back to manual configuration...");
+    await setupClaudeFallback(token);
+  }
+}
+
+async function setupClaudeFallback(token: string) {
+  const configPath = CONFIG_PATHS.claude;
+
+  let config: any = {};
+  if (existsSync(configPath)) {
+    const content = readFileSync(configPath, "utf-8");
+    config = JSON.parse(content);
+  }
+
+  if (!config.mcpServers) {
+    config.mcpServers = {};
+  }
+
+  config.mcpServers["dinq-autopilot"] = {
+    command: "npx",
+    args: ["-y", "dinq-autopilot-mcp"],
+    env: {
+      DINQ_USER_TOKEN: token,
+      DINQ_API_ENDPOINT: "https://api.dinq.me",
+    },
+  };
+
+  // Clean empty project-level mcpServers
+  let cleanedProjects = 0;
+  if (config.projects) {
+    for (const projectPath of Object.keys(config.projects)) {
+      const project = config.projects[projectPath];
+      if (project.mcpServers && Object.keys(project.mcpServers).length === 0) {
+        delete project.mcpServers;
+        cleanedProjects++;
+      }
+    }
+  }
+
   writeFileSync(configPath, JSON.stringify(config, null, 2));
 
   console.log("\nSetup complete!");
   console.log(`\nConfiguration saved to: ${configPath}`);
+  if (cleanedProjects > 0) {
+    console.log(`Cleaned ${cleanedProjects} project-level empty configs for global inheritance.`);
+  }
   console.log("\nPlease restart Claude Code to load the new configuration:");
   console.log("  1. Exit current Claude Code session");
   console.log("  2. Run 'claude' to start a new session");
@@ -109,7 +160,7 @@ async function setupCursor(token: string) {
 
   config.mcpServers["dinq-autopilot"] = {
     command: "npx",
-    args: ["-y", "dinq-autopilot"],
+    args: ["-y", "dinq-autopilot-mcp"],
     env: {
       DINQ_USER_TOKEN: token,
       DINQ_API_ENDPOINT: "https://api.dinq.me",
@@ -149,7 +200,7 @@ async function setupWindsurf(token: string) {
 
   config.mcpServers["dinq-autopilot"] = {
     command: "npx",
-    args: ["-y", "dinq-autopilot"],
+    args: ["-y", "dinq-autopilot-mcp"],
     env: {
       DINQ_USER_TOKEN: token,
       DINQ_API_ENDPOINT: "https://api.dinq.me",
