@@ -1,4 +1,4 @@
-# dinq-autopilot
+# dinqbot
 
 [English](#english) | [中文](#中文)
 
@@ -10,7 +10,7 @@
 
 ### Use Code Agent to Automatically Manage Your Dinq Cards
 
-dinq-autopilot lets you create and manage Dinq cards through natural language - just talk to your AI coding assistant (Claude Code, Cursor, Windsurf, Codex, etc.), and cards appear on your Dinq profile automatically.
+dinqbot lets you create and manage Dinq cards through natural language - just talk to your AI coding assistant (Claude Code, Cursor, Windsurf, Codex, etc.), and cards appear on your Dinq profile automatically.
 
 **Example:**
 ```
@@ -34,21 +34,21 @@ AI:  📋 Your cards:
 
 **1. Install**
 ```bash
-npm install -g dinq-autopilot
+npm install -g dinqbot
 ```
 
 **2. Setup**
 ```bash
 # For Claude Code
-dinq-autopilot setup claude
+dinqbot setup claude
 
 # For Cursor
-dinq-autopilot setup cursor
+dinqbot setup cursor
 
 # For Windsurf
-dinq-autopilot setup windsurf
+dinqbot setup windsurf
 ```
-Follow the browser prompt to get your Dinq API token from [dinq.me/autopilot](https://dinq.me/autopilot)
+Follow the browser prompt to get your Dinq API token from [dinq.me/dinqbot](https://dinq.me/dinqbot)
 
 **3. Use**
 
@@ -101,7 +101,7 @@ Works with any MCP-compatible AI coding assistant:
 ### How It Works
 
 ```
-You → AI Assistant → dinq-autopilot (MCP Server) → Dinq API → Card Created ✅
+You → AI Assistant → dinqbot (MCP Server) → Dinq API → Card Created ✅
 ```
 
 Built on [Model Context Protocol (MCP)](https://modelcontextprotocol.io) - the open standard for connecting AI assistants to external tools.
@@ -110,7 +110,7 @@ Built on [Model Context Protocol (MCP)](https://modelcontextprotocol.io) - the o
 
 ### Configuration
 
-After running `dinq-autopilot setup <platform>`, the tool automatically configures itself for your chosen platform. Your API token is stored locally and never shared.
+After running `dinqbot setup <platform>`, the tool automatically configures itself for your chosen platform. Your API token is stored locally and never shared.
 
 **Important**: After setup, please restart your AI coding assistant to load the new configuration.
 
@@ -130,7 +130,7 @@ MIT
 
 ### 使用 Code Agent 自动操作你的 Dinq 卡片
 
-dinq-autopilot 让你通过自然语言创建和管理 Dinq 卡片 - 只需对你的 AI 编程助手（Claude Code、Cursor、Windsurf、Codex 等）说话，卡片就会自动出现在你的 Dinq 主页上。
+dinqbot 让你通过自然语言创建和管理 Dinq 卡片 - 只需对你的 AI 编程助手（Claude Code、Cursor、Windsurf、Codex 等）说话，卡片就会自动出现在你的 Dinq 主页上。
 
 **示例：**
 ```
@@ -154,21 +154,21 @@ AI： 📋 你的卡片：
 
 **1. 安装**
 ```bash
-npm install -g dinq-autopilot
+npm install -g dinqbot
 ```
 
 **2. 配置**
 ```bash
 # Claude Code
-dinq-autopilot setup claude
+dinqbot setup claude
 
 # Cursor
-dinq-autopilot setup cursor
+dinqbot setup cursor
 
 # Windsurf
-dinq-autopilot setup windsurf
+dinqbot setup windsurf
 ```
-根据浏览器提示从 [dinq.me/autopilot](https://dinq.me/autopilot) 获取你的 Dinq API token
+根据浏览器提示从 [dinq.me/dinqbot](https://dinq.me/dinqbot) 获取你的 Dinq API token
 
 **3. 使用**
 
@@ -183,7 +183,7 @@ claude
 Cmd+K → 「把我的 LinkedIn 加到 Dinq：linkedin.com/in/username」
 ```
 
-就这样！自动驾驶会自动调用 Dinq API 为你创建卡片。
+就这样！DinqBot会自动调用 Dinq API 为你创建卡片。
 
 ---
 
@@ -221,7 +221,7 @@ Cmd+K → 「把我的 LinkedIn 加到 Dinq：linkedin.com/in/username」
 ### 工作原理
 
 ```
-你 → AI 助手 → dinq-autopilot (MCP 服务器) → Dinq API → 卡片创建 ✅
+你 → AI 助手 → dinqbot (MCP 服务器) → Dinq API → 卡片创建 ✅
 ```
 
 基于 [模型上下文协议 (MCP)](https://modelcontextprotocol.io) 构建 - 连接 AI 助手与外部工具的开放标准。
@@ -230,7 +230,7 @@ Cmd+K → 「把我的 LinkedIn 加到 Dinq：linkedin.com/in/username」
 
 ### 配置说明
 
-运行 `dinq-autopilot setup <平台>` 后，工具会自动为你选择的平台完成配置。你的 API token 存储在本地，不会被分享。
+运行 `dinqbot setup <平台>` 后，工具会自动为你选择的平台完成配置。你的 API token 存储在本地，不会被分享。
 
 **重要提示**：配置完成后，请重启你的 AI 编程助手以加载新的配置。
 
