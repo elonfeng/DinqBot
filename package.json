@@ -1,7 +1,7 @@
 {
-  "name": "dinq-autopilot",
-  "version": "0.2.17",
-  "description": "Auto-generate Dinq cards with Code Agents - Claude Code, Cursor, Windsurf & more",
+  "name": "dinqbot",
+  "version": "0.0.1",
+  "description": "DinqBot - Auto-generate Dinq cards with Code Agents - Claude Code, Cursor, Windsurf & more",
   "main": "dist/index.js",
   "type": "module",
   "files": [
@@ -10,8 +10,8 @@
     "LICENSE"
   ],
   "bin": {
-    "dinq-autopilot": "dist/cli.js",
-    "dinq-autopilot-mcp": "dist/index.js"
+    "dinqbot": "dist/cli.js",
+    "dinqbot-mcp": "dist/index.js"
   },
   "scripts": {
     "build": "tsc",
@@ -20,9 +20,9 @@
   },
   "keywords": [
     "dinq",
+    "dinqbot",
     "mcp",
     "ai",
-    "autopilot",
     "claude-code",
     "cursor",
     "model-context-protocol",

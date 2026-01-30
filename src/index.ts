@@ -23,8 +23,8 @@ if (!USER_TOKEN) {
 
 const server = new Server(
   {
-    name: "dinq-autopilot",
-    version: "0.1.0",
+    name: "dinqbot",
+    version: "0.0.1",
   },
   {
     capabilities: {
@@ -65,7 +65,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error("Dinq Autopilot MCP Server running on stdio");
+  console.error("DinqBot MCP Server running on stdio");
 }
 
 main().catch((error) => {
